@@ -36,15 +36,19 @@
         // fruit checkbox 변경 여부도 확인 -> check all 의 checkbox checked / unchecked 로 변경해주기 위해
         $('.fruit').change(function () {
             // boolean 을 통해 구분
-            let same = true;
-            let boxes = document.getElementsByClassName('fruit');
-            // fruit class 중 checked -> false 인 값이 있다면 전부 같지 않기에 false 로 초기화
-            for (let i = 0; i < boxes.length; i++) {
-                // ariaChecked 값을 확인하도록 한다
-                if (!boxes[i].getAttribute('ariaChecked')){
-                    same = false;
-                    break;
+            var same = true;
+            var boxes = document.getElementsByClassName('fruit');
+            // 카운트 초기화
+            var count = 0;
+            // 해당 체크박스가 선택된 갯수를 확인
+            for (var i = 0; i < boxes.length; i++) {
+                if (boxes[i].checked){
+                    count++;
                 }
+            }
+            // 같은 값이 아니라면 false 를 출력
+            if (boxes.length !== count){
+                same = false;
             }
             // check-all 체크박스를 unchecked 하기 위해 false 값 대입
             $('#checkAll').prop('checked', same);
