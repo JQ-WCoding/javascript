@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    /*리스트 스타일을 정하는 것 : 없음*/
+    list-style: none;
+}
+
+.slideContainer{
+    /*div 영역 지정*/
+    width: 100%;
+    /*상하좌우를 유동성있게 위치를 맞추는 역할*/
+    position: relative;
+}
+
+.slideWrap{
+    width: calc(100%*6);
+    /* 영역을 넘은 부분 보이지 않게 하기 위함*/
+    overflow: hidden;
+    margin-left: calc(-100%*1);
+}
+
+.slide{
+    float: left;
+}
+
+.slide img{
+    width: 100%;
+}
+
+.pageBtnWrap{
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    bottom: 7%;
+    width: 100%;
+    text-align: center;
+}
+
+.pageBtnWrap li{
+    display: inline;
+}
+
+.pageBtnWrap li .pageBt{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: 10px;
+    background-color: #fff;
+}
+
+.pageBtnWrap li .pageBt .addPageBt{
+    background-color: #ff0;
+}
