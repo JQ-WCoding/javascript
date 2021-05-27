@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Position</title>
+    <style>
+        div.static {
+            position: static;
+            left: 30px;
+            border: 3px solid black;
+        }
+
+        div.relative {
+            position: relative;
+            left: 30px;
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+<!-- left 속성을 줘도 페이지를 기준으로 정렬된다 (static) -->
+<div class="static">
+    div : static border
+</div>
+<br>
+<div class="relative">
+    div : relative border
+</div>
+</body>
+</html>

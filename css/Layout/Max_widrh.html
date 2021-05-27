@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div.ex1 {
+            /*  */
+            width: 500px;
+            margin: auto;
+            border: 3px solid black;
+        }
+
+        div.ex2 {
+            /*  */
+            max-width: 500px;
+            margin: auto;
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+<!-- auto가 아니라 넓이 유지가 불가 -->
+<div class="ex1">This div element has width: 500px;</div>
+<br>
+<!-- 창이 줄어들면 넓이폭에 상대적인 행동을 취함 -->
+<div class="ex2">This div element has max-width: 500px;</div>
+</body>
+</html>
