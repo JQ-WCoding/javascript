@@ -15,8 +15,7 @@ for ( var x of cars ) {
 }
 console.log( text2 );
 // loop of (String)
-var language
--"JavaScript";
+var language = "JavaScript";
 var text3 = "";
 for ( var x of language ) {
     text3 += x + "<br>";
