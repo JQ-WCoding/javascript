@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>file</title>
+
+  <script>
+    var input = document.querySelector('input');
+    var preview = document.querySelector('.preview');
+
+    function updateImageDisplay(){
+      var curFiles = input.files;
+
+      if ( curFiles.length === 0 ){
+        var para = document.createElement('p');
+        para.textContent = 'No file';
+        preview.appendChild(para);
+      } else {
+        var list = document.createElement('ol');
+        preview.appendChild(list);
+
+        for ( var file of curFiles ){
+          var listItem = document.createElement('li');
+          var para = document.createElement('p');
+          if ( validFileType(file) ){
+            para.textContent = `File name ${file.name}, file size ${returnFileSize(file.size)}.`;
+            const image = document.createElement('img');
+            image.src = URL.createObjectURL(file);
+
+            listItem.appendChild(image);
+            listItem.appendChild(para);
+          } else {
+            para.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
+            listItem.appendChild(para);
+          }
+
+          list.appendChild(listItem);
+          }
+        }
+      }
+
+
+    var fileTypes = {"image/apng",
+      "image/bmp",
+      "image/gif",
+      "image/jpeg",
+      "image/pjpeg",
+      "image/png",
+      "image/svg+xml",
+      "image/tiff",
+      "image/webp",
+      "image/x-icon"};
+
+    function validFileType(file){
+      return fileTypes.includes(file.type);
+    }
+
+  </script>
+
+</head>
+<body>
+<form method="post" enctype="multipart/form-data">
+  <!-- mutiple 추가시 다중 선택 가능 -->
+  <input type="file" id="image_upload" name="image_upload" accept=".jpg, .jpeg, .png" multiple>
+  <button>업로드!</button>
+  <!-- C:\fakepath\ 가 기본 첨부파일 경로로 자동 지정된다 -->
+</form>
+</body>
+</html>
