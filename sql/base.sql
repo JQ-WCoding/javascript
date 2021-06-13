@@ -69,5 +69,21 @@ SELECT *
 FROM table_name
 WHERE column_name BETWEEN value1 AND value2;
 
+-- Insert into
+INSERT INTO table_name(column1, column2)
+SELECT column1, column2
+FROM table_name
+WHERE condition;
+
+-- CASE
+CASE 
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN condition3 THEN result3
+    ELSE result4
+END;
+
+
+
 
 
