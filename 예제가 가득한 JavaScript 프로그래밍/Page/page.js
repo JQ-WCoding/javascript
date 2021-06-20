@@ -20,3 +20,13 @@ $(function (  ){
 
 });
 
+$.addClass(); // 클래스 적용하기
+$.removeClass(); // 클래스 제거하기
+$.toggleClass(); // 클래스 적용 혹은 제외하기
+
+// 높이와 폭 읽기
+$.height();
+$.width();
+
+
+
