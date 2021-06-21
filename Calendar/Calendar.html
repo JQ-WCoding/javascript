@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendar</title>
+    <style>
+        td {
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+
+        document.addEventListener( "DOMContentLoaded", function () {
+            buildCalendar();
+        } );
+
+        var today = new Date();
+
+        /**
+         * 캘린더 만들기
+         */
+        function buildCalendar() {
+
+            // 내용 비워주기
+            document.querySelector( "#calendar > tbody" ).innerHTML = '';
+
+            var startDate = new Date( today.getFullYear(), today.getMonth() );
+            var lastDate = new Date( today.getFullYear(), today.getMonth() + 1, 0 );
+
+            setYear();
+            var weekLength = 8;
+
+            console.log( weekLength );
+
+
+            // 요일 입히기
+            var cnt = startDate.getDate() - startDate.getDay();
+            var rowYn = true;
+            for ( var i = 0; i < weekLength; i++ ) {
+
+                var insert = '';
+                if(rowYn){
+                    insert = document.querySelector( "#calendar > tbody" ).insertRow();
+                    if ( i == 0 ) {
+                        for ( var j = 0; j < 7; j++ ) {
+                            if ( j >= startDate.getDay() ) {
+                                var inner = insert.insertCell();
+                                inner.textContent = cnt.toString();
+                            } else {
+                                var inner = insert.insertCell();
+                                inner.textContent = (new Date( startDate.getFullYear(), startDate.getMonth(), cnt ).getDate()).toString();
+                            }
+                            cnt++;
+                        }
+                    } else {
+                        for ( j = 0; j < 7; j++ ) {
+                            var inner = insert.insertCell();
+                            inner.textContent = cnt.toString();
+                            cnt++;
+                            if ( cnt > lastDate.getDate() ) {
+                                cnt = 1;
+                                rowYn = false;
+                            }
+                        }
+                    }
+                }else{
+                    //TODO: 예외사항 생길 시 적기
+                }
+            }
+
+        }
+
+        /**
+         * 연월 세팅하기
+         */
+        function setYear() {
+            document.getElementById( "calYear" ).innerHTML = today.getFullYear().toString();
+            document.getElementById( "calMonth" ).innerHTML = (today.getMonth() + 1).toString();
+        }
+
+        // 이번 연월 버튼
+        function preCalendar() {
+            today = new Date( today.getFullYear(), today.getMonth() - 1, today.getDate() );
+            buildCalendar();
+        }
+
+        // 다음 연월 버튼
+        function nextCalendar() {
+            today = new Date( today.getFullYear(), today.getMonth() + 1, today.getDate() );
+            buildCalendar();
+        }
+    </script>
+</head>
+<body>
+<table id="calendar">
+    <thead>
+    <tr>
+        <td><input type="button" value="<" onclick="preCalendar()"></td>
+        <td colspan="5" id="calendarYM">
+            <span id="calYear">YYYY</span>년
+            <span id="calMonth">MM</span>월
+        </td>
+        <td><input type="button" value=">" onclick="nextCalendar()"></td>
+    </tr>
+    <tr>
+        <td>일</td>
+        <td>월</td>
+        <td>화</td>
+        <td>수</td>
+        <td>목</td>
+        <td>금</td>
+        <td>토</td>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+</body>
+</html>
